@@ -1,0 +1,128 @@
+{
+  "ReRoutes": [
+    //LocationEventService Microservice Api Registrations
+    {
+      "DownstreamPathTemplate": "/LocationEventService",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "UpstreamPathTemplate": "/LocationEventService",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "LocationEventService"
+    },
+    {
+      "DownstreamPathTemplate": "/LocationEventService/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5003
+        }
+      ],
+      "UpstreamPathTemplate": "/LocationEventService/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "SwaggerKey": "LocationEventService"
+    },
+    //---------------------------------------------
+    //LocationQueryService Microservice Api Registrations
+    {
+      "DownstreamPathTemplate": "/LocationQueryService",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ],
+      "UpstreamPathTemplate": "/LocationQueryService",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "LocationQueryService"
+    },
+    {
+      "DownstreamPathTemplate": "/LocationQueryService/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5005
+        }
+      ],
+      "UpstreamPathTemplate": "/LocationQueryService/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "SwaggerKey": "LocationQueryService"
+    },
+    //---------------------------------------------
+    //MasterDataService Microservice Api Registrations
+    {
+      "DownstreamPathTemplate": "/MasterDataService",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5007
+        }
+      ],
+      "UpstreamPathTemplate": "/MasterDataService",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "MasterDataService"
+    },
+    {
+      "DownstreamPathTemplate": "/MasterDataService/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5007
+        }
+      ],
+      "UpstreamPathTemplate": "/MasterDataService/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "SwaggerKey": "MasterDataService"
+    }
+    //---------------------------------------------
+  ],
+  "SwaggerEndPoints": [
+    //LocationEventService Microservice Api Registrations
+    {
+      "Key": "LocationEventService",
+      "Config": [
+        {
+          "Name": "LocationEventService API",
+          "Version": "v1",
+          "Url": "http://localhost:5003/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    //---------------------------------------------
+    //LocationQueryService Microservice Api Registrations
+    {
+      "Key": "LocationQueryService",
+      "Config": [
+        {
+          "Name": "LocationQueryService API",
+          "Version": "v1",
+          "Url": "http://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    //---------------------------------------------
+    //MasterDataService Microservice Api Registrations
+    {
+      "Key": "MasterDataService",
+      "Config": [
+        {
+          "Name": "MasterDataService API",
+          "Version": "v1",
+          "Url": "http://localhost:5007/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5001"
+  }
+}
