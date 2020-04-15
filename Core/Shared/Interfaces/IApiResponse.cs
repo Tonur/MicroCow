@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Shared
+﻿namespace Shared.Interfaces
 {
     public interface IApiResponse<T>
     {

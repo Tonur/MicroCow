@@ -1,34 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using LocationQueryService.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Shared.Interfaces;
 
-namespace LocationQueryService.Data.Repositories
+namespace Shared.Repositories
 {
-    public class LocationQueryServiceRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey>
-        where TEntity : class, IEntity<TKey>
+    public class EfGenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey>
+        where TEntity : KeyedBaseModel<IEntity<TKey>, TKey>
+        where TKey : class, IEquatable<TKey>
     {
-        private readonly LocationQueryServiceContext _dbContext;
+        private readonly DbContext _dbContext;
 
-        public LocationQueryServiceRepository(LocationQueryServiceContext dbContext)
+        public EfGenericRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IQueryable<TEntity> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
             return _dbContext.Set<TEntity>().AsNoTracking();
         }
 
         public async Task<TEntity> GetById(TKey earTag)
         {
-            return await _dbContext.Set<TEntity>()
-                .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.EarTag.Equals(earTag));
+            var idEquals = KeyedBaseModel<TEntity, TKey>.IdEquals(earTag);
+            return await _dbContext.Set<TEntity>().FirstOrDefaultAsync(idEquals);
         }
 
         public async Task Create(TEntity entity)

@@ -2,7 +2,7 @@
   "ReRoutes": [
     //LocationEventService Microservice Api Registrations
     {
-      "DownstreamPathTemplate": "/LocationEventService",
+      "DownstreamPathTemplate": "/Locations",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -10,27 +10,14 @@
           "Port": 5003
         }
       ],
-      "UpstreamPathTemplate": "/LocationEventService",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "SwaggerKey": "LocationEventService"
-    },
-    {
-      "DownstreamPathTemplate": "/LocationEventService/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5003
-        }
-      ],
-      "UpstreamPathTemplate": "/LocationEventService/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "UpstreamPathTemplate": "/Locations",
+      "UpstreamHttpMethod": [ "Post" ],
       "SwaggerKey": "LocationEventService"
     },
     //---------------------------------------------
     //LocationQueryService Microservice Api Registrations
     {
-      "DownstreamPathTemplate": "/LocationQueryService",
+      "DownstreamPathTemplate": "/CowLocations",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -38,27 +25,14 @@
           "Port": 5005
         }
       ],
-      "UpstreamPathTemplate": "/LocationQueryService",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "SwaggerKey": "LocationQueryService"
-    },
-    {
-      "DownstreamPathTemplate": "/LocationQueryService/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5005
-        }
-      ],
-      "UpstreamPathTemplate": "/LocationQueryService/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "UpstreamPathTemplate": "/CowLocation",
+      "UpstreamHttpMethod": [ "Post" ],
       "SwaggerKey": "LocationQueryService"
     },
     //---------------------------------------------
     //MasterDataService Microservice Api Registrations
     {
-      "DownstreamPathTemplate": "/MasterDataService",
+      "DownstreamPathTemplate": "/Cow",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -66,21 +40,8 @@
           "Port": 5007
         }
       ],
-      "UpstreamPathTemplate": "/MasterDataService",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "SwaggerKey": "MasterDataService"
-    },
-    {
-      "DownstreamPathTemplate": "/MasterDataService/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5007
-        }
-      ],
-      "UpstreamPathTemplate": "/MasterDataService/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "UpstreamPathTemplate": "/Cow",
+      "UpstreamHttpMethod": [ "Post" ],
       "SwaggerKey": "MasterDataService"
     }
     //---------------------------------------------
@@ -93,7 +54,7 @@
         {
           "Name": "LocationEventService API",
           "Version": "v1",
-          "Url": "http://localhost:5003/swagger/v1/swagger.json"
+          "Url": "http://localhost:5002/swagger/v1/swagger.json"
         }
       ]
     },
@@ -105,7 +66,7 @@
         {
           "Name": "LocationQueryService API",
           "Version": "v1",
-          "Url": "http://localhost:5005/swagger/v1/swagger.json"
+          "Url": "http://localhost:5004/swagger/v1/swagger.json"
         }
       ]
     },
@@ -117,7 +78,7 @@
         {
           "Name": "MasterDataService API",
           "Version": "v1",
-          "Url": "http://localhost:5007/swagger/v1/swagger.json"
+          "Url": "http://localhost:5006/swagger/v1/swagger.json"
         }
       ]
     }

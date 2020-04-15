@@ -10,7 +10,7 @@ namespace LocationQueryService.Data.Contexts
         {
         }
 
-        public DbSet<Location> Locations { get; set; }
+        public DbSet<CowLocation> CowLocations { get; set; }
 
         
 

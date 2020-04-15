@@ -11,21 +11,21 @@ namespace LocationEventService.Data.Contexts
         {
         }
 
-        public DbSet<CowLocation> CowLocations { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
-        public void Create(CowLocation cowLocation)
+        public void Create(Location cowLocation)
         {
-            CowLocations.Add(cowLocation);
+            Locations.Add(cowLocation);
             SaveChanges();
         }
-        public void Update(CowLocation CowLocation)
+        public void Update(Location CowLocation)
         {
-            CowLocations.Update(CowLocation);
+            Locations.Update(CowLocation);
             SaveChanges();
         }
-        public void Upsert(CowLocation cowLocation)
+        public void Upsert(Location cowLocation)
         {
-            if (CowLocations.Contains(cowLocation))
+            if (Locations.Contains(cowLocation))
             {
                 Update(cowLocation);
             }

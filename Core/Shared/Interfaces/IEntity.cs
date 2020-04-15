@@ -2,8 +2,8 @@
 
 namespace Shared.Interfaces
 {
-    public interface IEntity<T>
+    public interface IEntity<TKey>
     {
-        public T EarTag { get; set; }
+        public TKey EarTag { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using LocationEventService.Application.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,10 +9,16 @@ using Microsoft.Extensions.Hosting;
 using RabbitMQ.IoC;
 using MediatR;
 using LocationEventService.Data.Contexts;
-using LocationEventService.Data.Repositories;
+using LocationEventService.Domain.CommandHandlers;
+using LocationEventService.Domain.Commands;
+using LocationEventService.Domain.EventHandlers;
+using LocationEventService.Domain.Events;
 using LocationEventService.Domain.Models;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
+using Newtonsoft.Json;
 using Shared.Interfaces;
+using Shared.Repositories;
 
 namespace LocationEventService.Api
 {
@@ -28,15 +35,27 @@ namespace LocationEventService.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddRabbitMq();
             services.AddMediatR(typeof(Startup));
 
-            services.AddDbContext<LocationEventServiceContext>(options =>
+            services.AddTransient(provider => 
+                new MongoClient(Configuration.GetConnectionString("LocationEventServiceMongo"))
+                    .GetDatabase("LocationEventServiceMongo"));
+
+            services.AddDbContext<DbContext, LocationEventServiceContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("LocationEventServiceContext")));
 
-            services.AddTransient<IGenericRepository<CowLocation, string>, LocationEventServiceRepository<CowLocation, string>>();
+            services.AddTransient<EventService>();
+            services.AddTransient<IGenericRepository<Location, string>, EfGenericRepository<Location, string>>();
+
+            //Events
+            services.AddTransient<CowUpsertedEventHandler>();
+
+            //Commands
+            services.AddTransient<IRequestHandler<UpsertLocationCommand, bool>, UpsertCowLocationCommandHandler>();
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocationEventService Microservice", Version = "v1" }); });
         }
@@ -57,13 +76,9 @@ namespace LocationEventService.Api
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            app.Subscribe<CowUpsertedEvent, CowUpsertedEventHandler>();
         }
     }
 }

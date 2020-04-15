@@ -59,6 +59,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterDataService.Data", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterDataService.Domain", "Microservices\MasterDataService\MasterDataService.Domain\MasterDataService.Domain.csproj", "{AE103B7C-B4FE-4D23-9C19-EE9D42AB7C0A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{7CC8210C-E959-4D5A-99FC-4F197A2BB3DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterDataService.Application", "Microservices\MasterDataService\MasterDataService.Application\MasterDataService.Application.csproj", "{7AAC31CE-9665-44B0-B4A7-9FB074BA9DBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{47F93696-52D9-4112-9EA8-398912F4042A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationQueryService.Application", "Microservices\LocationQueryService\LocationQueryService.Application\LocationQueryService.Application.csproj", "{D09435DB-DB9F-426D-87A8-D9570E1F4494}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F96968B2-543B-473B-B33D-B4CEF7128FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationEventService.Application", "Microservices\LocationEventService\LocationEventService.Application\LocationEventService.Application.csproj", "{46FA96E1-F74C-4B58-802E-B80E00102891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +129,18 @@ Global
 		{AE103B7C-B4FE-4D23-9C19-EE9D42AB7C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE103B7C-B4FE-4D23-9C19-EE9D42AB7C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE103B7C-B4FE-4D23-9C19-EE9D42AB7C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AAC31CE-9665-44B0-B4A7-9FB074BA9DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AAC31CE-9665-44B0-B4A7-9FB074BA9DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AAC31CE-9665-44B0-B4A7-9FB074BA9DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AAC31CE-9665-44B0-B4A7-9FB074BA9DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09435DB-DB9F-426D-87A8-D9570E1F4494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09435DB-DB9F-426D-87A8-D9570E1F4494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09435DB-DB9F-426D-87A8-D9570E1F4494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09435DB-DB9F-426D-87A8-D9570E1F4494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FA96E1-F74C-4B58-802E-B80E00102891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FA96E1-F74C-4B58-802E-B80E00102891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FA96E1-F74C-4B58-802E-B80E00102891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FA96E1-F74C-4B58-802E-B80E00102891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +171,12 @@ Global
 		{A06149FD-F6DE-46E8-97A5-F7D0C74261DA} = {8018D9CA-D332-4D96-A4FA-BAB7E09B41EB}
 		{87B204FB-5811-4611-B307-A428923E52E5} = {A06149FD-F6DE-46E8-97A5-F7D0C74261DA}
 		{AE103B7C-B4FE-4D23-9C19-EE9D42AB7C0A} = {5B871B1B-A621-4FE1-BC43-EA90DA0F7A6C}
+		{7CC8210C-E959-4D5A-99FC-4F197A2BB3DA} = {8018D9CA-D332-4D96-A4FA-BAB7E09B41EB}
+		{7AAC31CE-9665-44B0-B4A7-9FB074BA9DBE} = {7CC8210C-E959-4D5A-99FC-4F197A2BB3DA}
+		{47F93696-52D9-4112-9EA8-398912F4042A} = {ECC5F889-C061-471F-8D84-982402766046}
+		{D09435DB-DB9F-426D-87A8-D9570E1F4494} = {47F93696-52D9-4112-9EA8-398912F4042A}
+		{F96968B2-543B-473B-B33D-B4CEF7128FDA} = {423AA046-E017-4C9F-8275-F012248A156E}
+		{46FA96E1-F74C-4B58-802E-B80E00102891} = {F96968B2-543B-473B-B33D-B4CEF7128FDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35C7118E-0D8D-445E-B031-9A1B4A3BDE6E}

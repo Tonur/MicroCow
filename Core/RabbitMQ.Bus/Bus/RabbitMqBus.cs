@@ -45,8 +45,9 @@ namespace RabbitMQ.Bus.Bus
             var message = JsonConvert.SerializeObject(@event);
             var body = Encoding.UTF8.GetBytes(message);
 
-            channel.QueueDeclare(eventName, false, false, false, null);
-            channel.BasicPublish("", eventName, null, body);
+            channel.ExchangeDeclare(eventName, ExchangeType.Fanout);
+            //channel.QueueDeclare(eventName, false, false, false, null);
+            channel.BasicPublish(eventName, "", null, body);
         }
 
         public void Subscribe<T, TH>() where T : Event where TH : IEventHandler<T>
@@ -76,16 +77,19 @@ namespace RabbitMQ.Bus.Bus
             var connection = factory.CreateConnection();
             var channel = connection.CreateModel();
             var eventName = typeof(T).Name;
+            var queueName = channel.QueueDeclare(eventName + "-" + Guid.NewGuid(), false, false, true, null).QueueName;
 
-            channel.QueueDeclare(eventName, false, false, false, null);
+            channel.ExchangeDeclare(eventName, ExchangeType.Fanout);
+            channel.QueueBind(queueName, eventName, "");
+
             var consumer = new AsyncEventingBasicConsumer(channel);
             consumer.Received += Consumer_Received;
-            channel.BasicConsume(eventName, true, consumer);
+            channel.BasicConsume(queueName, false, consumer);
         }
 
         private async Task Consumer_Received(object sender, BasicDeliverEventArgs @event)
         {
-            var eventName = @event.RoutingKey;
+            var eventName = @event.Exchange;
             var message = Encoding.UTF8.GetString(@event.Body);
 
             try
